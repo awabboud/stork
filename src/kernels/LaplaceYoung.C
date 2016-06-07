@@ -32,8 +32,13 @@ LaplaceYoung::computeQpResidual()
 Real
 LaplaceYoung::computeQpJacobian()
 {
-  return 0.0;
+//  return 0.0;
   
 //  return _grad_phi[_j][_qp] * _grad_test[_i][_qp];
+
+  Real k = 1.0/std::sqrt(1.0 + std::abs(_grad_u[_qp]*_grad_u[_qp]) );
+  return k * _grad_phi[_j][_qp] * _grad_test[_i][_qp];
+  
+                           
 }
 
